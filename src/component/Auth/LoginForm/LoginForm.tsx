@@ -1,22 +1,25 @@
 'use client';
 
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useFormPersist from 'react-hook-form-persist';
 
 import { FormNotification } from '@/component/Auth/FormNotification';
-import FormInputProps from '@/component/Auth/RegisterForm/RegisterForm.props';
 import fieldsParams from '@/component/Auth/RegisterForm/fieldsParams';
 import { FormInput } from '@/component/common/FormInput';
 import { Loader } from '@/component/common/Loader';
-
 import d from '@/data/auth.json';
+// import { supabase } from '@/lib/initSupabase';
 
 export const LoginForm = () => {
   const [isSending, setIsSending] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
   const STORAGE_KEY = 'registerForm';
+  const router = useRouter();
+  const supabase = createClientComponentClient<any>();
 
   const {
     formState: { errors },
@@ -36,15 +39,21 @@ export const LoginForm = () => {
     storage: isBrowser ? window.sessionStorage : undefined,
   });
 
-  const onSubmitHandler = async (data: FormInputProps) => {
+  const onSubmitHandler = async (data: any) => {
+    const { email, password } = data;
     try {
       setIsSending(true);
-      const result = data;
-      //   const result = await sendToTlg(data);
-      if (result.ok) {
+
+      const result = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      router.refresh();
+      if (result) {
         setIsSending(false);
         setFinalMessage(d.messages.sent);
         reset();
+
         sessionStorage.removeItem(STORAGE_KEY);
       }
     } catch (error) {

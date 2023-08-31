@@ -1,11 +1,23 @@
-import Image from 'next/image'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
+import { BlogList } from '@/page-component/BlogsList';
+
+export default async function Home() {
+  const supabase = createServerComponentClient<any>({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    redirect('/auth');
+  }
   return (
     <main className="">
       <div className="container">
-        Main
+        <BlogList />
       </div>
     </main>
-  )
+  );
 }
