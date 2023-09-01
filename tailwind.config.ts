@@ -17,6 +17,7 @@ const config: Config = {
         main_dark: '#003A74',
         main_card: '#1976D2',
         main_theme: '#14988B',
+        green_back: '#C9E1FA',
         black: '#1E1E1E',
         white: '#FFFFFF',
         red_error: '#9C1414',
