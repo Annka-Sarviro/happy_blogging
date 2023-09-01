@@ -1,34 +1,33 @@
-// 'use client';
 import { BlogList } from '@/component/Blogs/BlogsList';
+import { Button, ButtonGroup } from '@mui/material';
 
-export const Blogs = ({ blogs, roles, id }: any) => {
-  // const [isAllBlogs, setIsAllBlogs] = useState(true);
+import d from '@/data/blogs.json';
 
-  // const handleClick = () => {
-  //   setIsAllBlogs(!isAllBlogs);
-  // };
+export const Blogs = ({ blogs, roles, id, userPage }: any) => {
   return (
     <section className="py-4">
       <div className="container text-center">
-        {/* <ButtonGroup variant="text" aria-label="Button group for choose all or author blogs">
+        <ButtonGroup variant="text" aria-label="Button group for choose all or author blogs">
           <Button
-            className={` hover:bg-white font-montserrat hover:text-main_dark ${
-              isAllBlogs ? 'text-green_back' : ''
+            href="/"
+            className={`${
+              userPage ? '' : 'underline underline-offset-1'
+            } hover:bg-white font-montserrat hover:text-main_dark active:text-green_back
             }`}
-            onClick={handleClick}
           >
-            AllPosts
+            {d.button.allPosts}
           </Button>
 
           <Button
-            className={` hover:bg-white font-montserrat hover:text-main_dark ${
-              !isAllBlogs ? 'text-green_back' : ''
+            href="/myblogs"
+            className={`${
+              userPage ? 'underline underline-offset-1' : ''
+            } hover:bg-white font-montserrat hover:text-main_dark active:text-green_back
             }`}
-            onClick={handleClick}
           >
-            MyPost
+            {d.button.myPosts}
           </Button>
-        </ButtonGroup> */}
+        </ButtonGroup>
         <BlogList blogs={blogs ?? []} roles={roles} id={id} />
       </div>
     </section>
