@@ -1,0 +1,16 @@
+{
+  "fields": [{ "name": "text", "type": "text", "label": "Enter your comment" }],
+  "button": { "add": "Add comments", "close": "cancel" },
+  "messages": {
+    "sent": "Success",
+    "error": "Ooops...Try again",
+    "validation": {
+      "text": {
+        "required": "This field is required",
+        "min": "Text is to short",
+        "max": "Text is to long",
+        "empty": "Field can not be empty"
+      }
+    }
+  }
+}
