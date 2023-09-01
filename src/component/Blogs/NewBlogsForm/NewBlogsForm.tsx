@@ -12,8 +12,10 @@ import { FormInput } from '@/component/common/FormInput';
 import { Loader } from '@/component/common/Loader';
 import d from '@/data/blogs.json';
 import { Button } from '@mui/material';
+import { FieldValues } from 'react-hook-form';
+import { NewBlogProps } from '../NewBlogs/NewBlogProps.props';
 
-export const NewBlogsForm = ({ id }: any) => {
+export const NewBlogsForm = ({ id }: NewBlogProps) => {
   const [isSending, setIsSending] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
@@ -39,7 +41,7 @@ export const NewBlogsForm = ({ id }: any) => {
     storage: isBrowser ? window.sessionStorage : undefined,
   });
 
-  const onSubmitHandler = async (data: any) => {
+  const onSubmitHandler = async (data: FieldValues) => {
     const { title, text } = data;
     try {
       setIsSending(true);
@@ -85,8 +87,8 @@ export const NewBlogsForm = ({ id }: any) => {
       {isSending && <Loader />}
     </>
   ) : error ? (
-    <FormNotification forOrdering forError subText={finalMessage} />
+    <FormNotification forError subText={finalMessage} />
   ) : (
-    <FormNotification forOrdering subText={finalMessage} />
+    <FormNotification subText={finalMessage} />
   );
 };

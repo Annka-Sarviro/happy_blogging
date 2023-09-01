@@ -4,12 +4,12 @@ import { BlogCard } from '@/component/Blogs/BlogCard';
 import { BlogsCardProps } from '@/component/Blogs/BlogCard/BlogsCard.props';
 import { NewBlogs } from '@/component/Blogs/NewBlogs';
 
+import { BlogListProps } from './Bloglist.props';
+
 import d from '@/data/blogs.json';
 
-export const BlogList = (props: any) => {
+export const BlogList = (props: BlogListProps) => {
   const { blogs, roles, id } = props;
-
-  console.log();
 
   return (
     <div className="py-4 ">

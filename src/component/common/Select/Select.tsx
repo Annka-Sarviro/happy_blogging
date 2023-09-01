@@ -2,7 +2,7 @@ import ISelectProps from './ISelectProps';
 
 export const Select = (props: ISelectProps) => {
   const { data, reg, errors, options } = props;
-  const { type, name, label, value1, value2 } = data;
+  const { name, label, value1, value2 } = data;
   return (
     <div className="relative">
       <select

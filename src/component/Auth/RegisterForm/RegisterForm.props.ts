@@ -1,3 +1,3 @@
-type FormInputProps = Record<string, object>;
+type FormInputProps = Record<string, string>;
 
 export default FormInputProps;

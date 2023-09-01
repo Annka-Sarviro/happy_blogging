@@ -5,7 +5,9 @@ import { useState } from 'react';
 import { CommentsCard } from '../CommentsCard';
 import { CommentsForm } from '../CommentsForm/CommentsForm';
 
-export const CommentsList = ({ comments, blog_id, user_id, roles }: any) => {
+import { CommentsListProps } from './CommentsList.props';
+
+export const CommentsList = ({ comments, blog_id, user_id, roles }: CommentsListProps) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const handelClick = () => {
@@ -14,7 +16,7 @@ export const CommentsList = ({ comments, blog_id, user_id, roles }: any) => {
   return (
     <>
       <ul className="mb-4 border-t-2 justify-self-end mt-[auto]">
-        {comments.map((item: any) => {
+        {comments?.map((item: any) => {
           return <CommentsCard item={item} key={item.id} />;
         })}
       </ul>
