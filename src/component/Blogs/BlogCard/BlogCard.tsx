@@ -18,7 +18,7 @@ export const BlogCard = async (props: BlogsProps) => {
 
   let { data: comments, error } = await supabase.from('comments').select().eq('blog_id', id);
 
-  const { username } = author[0];
+  const username = author?.[0]?.username;
 
   return (
     <Card
