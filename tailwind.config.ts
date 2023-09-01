@@ -17,11 +17,8 @@ const config: Config = {
         main_dark: '#003A74',
         main_card: '#1976D2',
         main_theme: '#14988B',
-        green_back: '#C9E1FA',
         black: '#1E1E1E',
         white: '#FFFFFF',
-        gray_light: '#D9D9D9',
-        gray_dark: '#BBBABA',
         red_error: '#9C1414',
       },
       fontFamily: {

@@ -10,9 +10,10 @@ import { FormNotification } from '@/component/Auth/FormNotification';
 import { FormInput } from '@/component/common/FormInput';
 import { Loader } from '@/component/common/Loader';
 import d from '@/data/auth.json';
-// import FormInputProps from './RegisterForm.props';
+
 import { Select } from '@/component/common/Select';
 import { useRouter } from 'next/navigation';
+import FormInputProps from './RegisterForm.props';
 import fieldsParams from './fieldsParams';
 
 export const RegisterForm = () => {
@@ -41,9 +42,9 @@ export const RegisterForm = () => {
     storage: isBrowser ? window.sessionStorage : undefined,
   });
 
-  const onSubmitHandler = async (data: any) => {
+  const onSubmitHandler = async (data: FormInputProps) => {
     const { email, password, username, roles } = data;
-    console.log(data);
+
     try {
       setIsSending(true);
       const result = await supabase.auth.signUp({
@@ -62,7 +63,6 @@ export const RegisterForm = () => {
 
       setIsSending(false);
       setFinalMessage(d.messages.sent);
-      console.log(finalMessage);
       reset();
       sessionStorage.removeItem(STORAGE_KEY);
 
@@ -76,7 +76,7 @@ export const RegisterForm = () => {
     } catch (error) {
       setIsSending(false);
       setError(true);
-      console.log('sdfsf');
+
       setFinalMessage(d.messages.error);
     }
   };

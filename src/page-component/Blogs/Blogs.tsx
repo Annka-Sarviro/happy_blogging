@@ -1,11 +1,13 @@
 import { BlogList } from '@/component/Blogs/BlogsList';
 import { Button, ButtonGroup } from '@mui/material';
 
+import { BlogsProps } from './Blogs.props';
+
 import d from '@/data/blogs.json';
 
-export const Blogs = ({ blogs, roles, id, userPage }: any) => {
+export const Blogs = ({ blogs, roles, id, userPage }: BlogsProps) => {
   return (
-    <section className="py-4">
+    <section className="py-4 min-h-[800px]">
       <div className="container text-center">
         <ButtonGroup variant="text" aria-label="Button group for choose all or author blogs">
           <Button
