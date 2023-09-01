@@ -20,6 +20,7 @@ Dillinger uses a number of open source projects to work properly:
 
 
 And of course Dillinger itself is open source with a [happy_blogging](https://github.com/Annka-Sarviro/happy_blogging) on GitHub.
+[![Blog Page](https://imageup.ru/img222/4506042/snimok.jpg)](https://imageup.ru/img222/4506042/snimok.jpg.html)
 
 ## Installation
 
@@ -38,3 +39,4 @@ Start development
 npm run dev
 ```
 The application will be available on [(http://localhost:3000/)](http://localhost:3000/)
+
