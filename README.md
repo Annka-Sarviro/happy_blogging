@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HappyBlogging
+[![CosmoDiscovery](https://imageup.ru/img182/4506039/ogp.png)](https://imageup.ru/img182/4506039/ogp.png.html)
 
-## Getting Started
+## _Future Company_
+[Click to view website](https://happy-blogging.vercel.app/)
 
-First, run the development server:
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Annka-Sarviro/happy_blogging)](https://img.shields.io/github/commit-activity/w/Annka-Sarviro/happy_blogging)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Our website is a dedicated platform for literature enthusiasts and bloggers to share their passion for books and literature. Explore a diverse range of book reviews, literary analysis, and author insights, or start your own literary blog and connect with like-minded individuals. Join our community of book lovers and embark on a literary journey like no other.
+
+## Tech
+[![GitHub top language](https://img.shields.io/github/languages/top/Annka-Sarviro/happy_blogging)](https://img.shields.io/github/languages/top/Annka-Sarviro/happy_blogging)
+Dillinger uses a number of open source projects to work properly:
+
+- [NextJS] - HTML enhanced for web apps!
+- [TypeScript] - JavaScript With Syntax For Types.
+- [tailwindcss] - Rapidly build modern websites without ever leaving your HTML.
+- [MUI] - Move faster with intuitive React UI tools
+- [https://dillinger.io/t] - Markdown editor.
+
+
+And of course Dillinger itself is open source with a [happy_blogging](https://github.com/Annka-Sarviro/happy_blogging) on GitHub.
+
+## Installation
+
+To run the application, you need to install Node.js (v.16).
+
+Clone repositorie
+```code
+git clone https://github.com/Annka-Sarviro/happy_blogging.git
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Install the basic project dependencies 
+```code
+npm install
+```
+Start development 
+```code
+npm run dev
+```
+The application will be available on [(http://localhost:3000/)](http://localhost:3000/)
