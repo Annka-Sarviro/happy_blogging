@@ -4,8 +4,10 @@ import { Montserrat } from 'next/font/google';
 import { cookies } from 'next/headers';
 import './globals.css';
 
+import { routs } from '@/helper/routs';
 import { Footer } from '@/layout/Footer';
 import { Header } from '@/layout/Header';
+import { Database } from '@/lib/database.types';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 export const dynamic = 'force-dynamic';
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'HappyBlogging',
     description: 'Lets go to blogging',
-    // url: 'https://nextjs.org',
+    url: routs.URL,
     siteName: 'HappyBlogging',
 
     images: [
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const supabase = createServerComponentClient<any>({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -46,7 +48,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className={montserrat.className}>
         <Header session={session} />
-        {/* <Suspense fallback={<Loading />}></Suspense> */}
         <main>{children}</main>
         <Footer />
       </body>

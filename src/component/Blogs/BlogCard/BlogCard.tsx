@@ -6,13 +6,14 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { CommentsList } from '../CommentsList';
 
+import { Database } from '@/lib/database.types';
 import QuoteImg from '../../../../public/svg/quote.svg';
 
 export const BlogCard = async (props: BlogsProps) => {
   const { title, text, owner, id } = props.item;
 
   const { user_id, roles } = props;
-  const supabase = createServerComponentClient<any>({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
 
   const { data: author } = await supabase.from('profiles').select().eq('id', owner);
 

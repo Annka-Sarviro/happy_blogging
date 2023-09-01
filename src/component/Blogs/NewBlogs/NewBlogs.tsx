@@ -4,10 +4,11 @@ import { Dialog } from '@mui/material';
 import { useState } from 'react';
 
 import { NewBlogsForm } from '../NewBlogsForm';
+import { NewBlogProps } from './NewBlogProps.props';
 
 import d from '@/data/blogs.json';
 
-export const NewBlogs = ({ id }: any) => {
+export const NewBlogs = ({ id }: NewBlogProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = () => {

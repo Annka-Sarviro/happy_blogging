@@ -10,6 +10,8 @@ import { FormNotification } from '@/component/Auth/FormNotification';
 import { FormInput } from '@/component/common/FormInput';
 import { Loader } from '@/component/common/Loader';
 import d from '@/data/auth.json';
+import { Database } from '@/lib/database.types';
+import { FieldValues } from 'react-hook-form';
 
 export const LoginForm = () => {
   const [isSending, setIsSending] = useState<boolean>(false);
@@ -17,7 +19,7 @@ export const LoginForm = () => {
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
   const STORAGE_KEY = 'loginForm';
   const router = useRouter();
-  const supabase = createClientComponentClient<any>();
+  const supabase = createClientComponentClient<Database>();
 
   const {
     formState: { errors },
@@ -37,7 +39,7 @@ export const LoginForm = () => {
     storage: isBrowser ? window.sessionStorage : undefined,
   });
 
-  const onSubmitHandler = async (data: any) => {
+  const onSubmitHandler = async (data: FieldValues) => {
     const { email, password } = data;
     try {
       setIsSending(true);
@@ -83,8 +85,8 @@ export const LoginForm = () => {
       </form>
     </>
   ) : error ? (
-    <FormNotification forOrdering forError subText={finalMessage} />
+    <FormNotification forError subText={finalMessage} />
   ) : (
-    <FormNotification forOrdering subText={finalMessage} />
+    <FormNotification subText={finalMessage} />
   );
 };

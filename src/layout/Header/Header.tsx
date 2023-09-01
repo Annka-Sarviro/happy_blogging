@@ -1,5 +1,6 @@
 'use client';
 import { Logo } from '@/layout/Logo';
+import { Database } from '@/lib/database.types';
 import { Button } from '@mui/material';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
@@ -8,7 +9,7 @@ import d from '@/data/header.json';
 
 export const Header = ({ session }: any) => {
   const router = useRouter();
-  const supabase = createClientComponentClient<any>();
+  const supabase = createClientComponentClient<Database>();
 
   const handleClick = async () => {
     await supabase.auth.signOut();
