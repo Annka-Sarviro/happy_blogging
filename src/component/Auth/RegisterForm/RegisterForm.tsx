@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@mui/material';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -13,8 +14,6 @@ import d from '@/data/auth.json';
 import { Select } from '@/component/common/Select';
 import { useRouter } from 'next/navigation';
 import fieldsParams from './fieldsParams';
-
-// import { supabase } from '@/lib/initSupabase';
 
 export const RegisterForm = () => {
   const [isSending, setIsSending] = useState<boolean>(false);
@@ -61,22 +60,30 @@ export const RegisterForm = () => {
       });
       router.refresh();
 
-      if (result) {
+      setIsSending(false);
+      setFinalMessage(d.messages.sent);
+      console.log(finalMessage);
+      reset();
+      sessionStorage.removeItem(STORAGE_KEY);
+
+      if (result.error) {
         setIsSending(false);
-        setFinalMessage(d.messages.sent);
-        reset();
-        sessionStorage.removeItem(STORAGE_KEY);
+        setError(true);
+
+        setFinalMessage(d.messages.error);
+        router.push('/');
       }
     } catch (error) {
       setIsSending(false);
       setError(true);
+      console.log('sdfsf');
       setFinalMessage(d.messages.error);
     }
   };
 
   return !error && !finalMessage ? (
     <>
-      <form onSubmit={handleSubmit(onSubmitHandler)}>
+      <form onSubmit={handleSubmit(onSubmitHandler)} className="max-w-[480px] mx-auto">
         {d.fields.map((field, ind) =>
           field.type === 'select' ? (
             <Select
@@ -92,17 +99,23 @@ export const RegisterForm = () => {
               data={field}
               reg={register}
               errors={errors}
+              showErrors
               options={fieldsParams[field.name as keyof typeof fieldsParams]}
             />
           )
         )}
-        <button type="submit">{d.button.reg}</button>
+        {isSending ? (
+          <Loader />
+        ) : (
+          <Button type="submit" variant="contained" className=" bg-main_card hover:bg-main_dark">
+            {d.button.reg}
+          </Button>
+        )}
       </form>
-      {isSending && <Loader />}
     </>
   ) : error ? (
-    <FormNotification forOrdering forError subText={finalMessage} />
+    <FormNotification forError subText={finalMessage} />
   ) : (
-    <FormNotification forOrdering subText={finalMessage} />
+    <FormNotification subText={finalMessage} />
   );
 };

@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -7,29 +7,29 @@ const config: Config = {
       container: {
         center: true,
         padding: {
-          DEFAULT: "1.25rem",
-          sm: "1.25rem",
-          md: "1.5rem",
-          xl: "2rem",
+          DEFAULT: '1.25rem',
+          sm: '1.25rem',
+          md: '1.5rem',
+          xl: '2rem',
         },
       },
       colors: {
-        dark: "#1E1E1E",
-        dark_gray: "#6E6E6E",
-        gray: "#8C8C8C",
-        gray_light: "#C7C7C7",
-        white_gray: "#DFDEDE",
-        gray_transparent: "rgba(29, 29, 29, 0.34)",
-        accent: "#5364FA",
-        error: "#E25252",
+        main_dark: '#003A74',
+        main_card: '#1976D2',
+        main_theme: '#14988B',
+        green_back: '#C9E1FA',
+        black: '#1E1E1E',
+        white: '#FFFFFF',
+        gray_light: '#D9D9D9',
+        gray_dark: '#BBBABA',
+        red_error: '#9C1414',
       },
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },

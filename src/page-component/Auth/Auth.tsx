@@ -1,4 +1,5 @@
 'use client';
+import { Button, Typography } from '@mui/material';
 import { useState } from 'react';
 
 import { LoginForm } from '@/component/Auth/LoginForm';
@@ -13,18 +14,26 @@ export const Auth = () => {
     setIsHaveAccount(!isHaveAccount);
   };
   return (
-    <div className="container">
-      <h1>{data.title}</h1>
-      <h2>{isHaveAccount ? data.subtitleLogin : data.subtitleReg}</h2>
+    <div className="container text-center h-[80vh] ">
+      <Typography variant="h4" component="h1">
+        {data.title}
+      </Typography>
+      <Typography variant="h5" component="h2" className="pb-4">
+        {isHaveAccount ? data.subtitleLogin : data.subtitleReg}
+      </Typography>
       {isHaveAccount ? <LoginForm /> : <RegisterForm />}
-
-      <p className="inline-block"> {!isHaveAccount ? data.routText.login : data.routText.reg} </p>
-      <button
-        onClick={handelClick}
-        className="inline-block text-dark hover:text-accent underline underline-offset-2 "
-      >
-        {!isHaveAccount ? data.button.login : data.button.reg}
-      </button>
+      <div className="flex items-baseline justify-center mt-4">
+        <Typography variant="subtitle2" component="p" className="inline-block">
+          {!isHaveAccount ? data.routText.login : data.routText.reg}{' '}
+        </Typography>
+        <Button
+          variant="text"
+          onClick={handelClick}
+          className=" hover:bg-white font-montserrat hover:text-main_dark  !lowercase !p-0"
+        >
+          {!isHaveAccount ? data.button.login : data.button.reg}
+        </Button>
+      </div>
     </div>
   );
 };

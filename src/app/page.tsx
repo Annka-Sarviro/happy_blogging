@@ -2,7 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { BlogList } from '@/page-component/BlogsList';
+import { Blogs } from '@/page-component/Blogs';
 
 export default async function Home() {
   const supabase = createServerComponentClient<any>({ cookies });
@@ -13,11 +13,10 @@ export default async function Home() {
   if (!session) {
     redirect('/auth');
   }
-  return (
-    <main className="">
-      <div className="container">
-        <BlogList />
-      </div>
-    </main>
-  );
+  const roles = session.user.user_metadata.roles;
+  const id = session.user.id;
+
+  const { data: blogs } = await supabase.from('blogs').select();
+
+  return <Blogs blogs={blogs ?? []} roles={roles} id={id} />;
 }
