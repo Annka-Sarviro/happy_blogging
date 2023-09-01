@@ -3,7 +3,7 @@ import FormNotificationProps from '@/component/Auth/FormNotification/FormNotific
 export function FormNotification(props: FormNotificationProps) {
   const { subText, forError } = props;
   return (
-    <div className="before:w-[106px] before:h-[130px] p-4 !w-[250px] before:content='' before:absolute before:bottom-[14px] before:left-[3%] bg-no-repeat text-center">
+    <div className="before:w-[106px] before:h-[130px] p-4 !w-[250px] before:content='' before:absolute before:bottom-[14px] before:left-[3%] bg-no-repeat text-center mx-auto">
       <p
         className={`${
           forError ? 'text-red_error' : 'text-main_dark'
