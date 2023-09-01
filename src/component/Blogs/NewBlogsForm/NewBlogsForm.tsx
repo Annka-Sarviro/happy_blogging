@@ -73,6 +73,7 @@ export const NewBlogsForm = ({ id }: any) => {
             key={ind}
             data={field}
             reg={register}
+            showErrors
             errors={errors}
             options={fieldsParams[field.name as keyof typeof fieldsParams]}
           />

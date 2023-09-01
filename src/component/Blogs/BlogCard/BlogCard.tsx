@@ -28,11 +28,13 @@ export const BlogCard = async (props: BlogsProps) => {
       <Typography variant="h6" component="h3" className="mb-4 ">
         {title}
       </Typography>
+
       <QuoteImg className="w-[30px] h-[30px]" />
       <Typography variant="subtitle1" component="p" className="italic mb-3 min-h-[30px] ">
         {text}
       </Typography>
       <QuoteImg className="w-[30px] h-[30px] rotate-180 ml-auto" />
+
       <Typography variant="caption" component="p" className="text-left mb-8">
         {username}
       </Typography>

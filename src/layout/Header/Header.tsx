@@ -13,7 +13,6 @@ export const Header = ({ session }: any) => {
   const handleClick = async () => {
     await supabase.auth.signOut();
     router.refresh();
-    console.log('logout');
   };
 
   return (
