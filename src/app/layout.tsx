@@ -8,7 +8,7 @@ import { Footer } from '@/layout/Footer';
 import { Header } from '@/layout/Header';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
-
+export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: 'HappyBlogging',
   description: 'Lets go to blogging',

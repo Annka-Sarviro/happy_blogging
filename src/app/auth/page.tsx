@@ -2,7 +2,7 @@ import { Auth } from '@/page-component/Auth/Auth';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-
+export const dynamic = 'force-dynamic';
 export default async function AuthPage() {
   const supabase = createServerComponentClient<any>({ cookies });
   const {
