@@ -49,7 +49,7 @@ const fieldsParams: {
     },
     required: data.messages.validation.password.required,
     minLength: {
-      value: 9,
+      value: 6,
       message: data.messages.validation.password.min,
     },
     maxLength: {
