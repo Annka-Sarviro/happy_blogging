@@ -1,5 +1,5 @@
 'use client';
-import { Button } from '@mui/material';
+
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -7,15 +7,17 @@ import { useForm } from 'react-hook-form';
 import useFormPersist from 'react-hook-form-persist';
 
 import { FormNotification } from '@/component/Auth/FormNotification';
+import fieldsParams from '@/component/Blogs/NewBlogsForm/fieldsParams';
 import { FormInput } from '@/component/common/FormInput';
 import { Loader } from '@/component/common/Loader';
-import d from '@/data/auth.json';
+import d from '@/data/blogs.json';
+import { Button } from '@mui/material';
 
-export const LoginForm = () => {
+export const NewBlogsForm = ({ id }: any) => {
   const [isSending, setIsSending] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
-  const STORAGE_KEY = 'loginForm';
+  const STORAGE_KEY = 'newBlogForm';
   const router = useRouter();
   const supabase = createClientComponentClient<any>();
 
@@ -38,27 +40,23 @@ export const LoginForm = () => {
   });
 
   const onSubmitHandler = async (data: any) => {
-    const { email, password } = data;
+    const { title, text } = data;
     try {
       setIsSending(true);
 
-      const result = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      const { data, error } = await supabase
+        .from('blogs')
+        .insert([{ title, text, owner: id }])
+        .select();
+
       router.refresh();
 
-      setIsSending(false);
-      setFinalMessage(d.messages.login);
-      reset();
-
-      sessionStorage.removeItem(STORAGE_KEY);
-
-      if (result.error) {
+      if (data) {
         setIsSending(false);
-        setError(true);
-        setFinalMessage(d.messages.error);
-        router.push('/');
+        setFinalMessage(d.messages.sent);
+        reset();
+
+        sessionStorage.removeItem(STORAGE_KEY);
       }
     } catch (error) {
       setIsSending(false);
@@ -69,18 +67,21 @@ export const LoginForm = () => {
 
   return !error && !finalMessage ? (
     <>
-      <form onSubmit={handleSubmit(onSubmitHandler)} className="max-w-[480px] mx-auto">
-        {d.fieldsLogin.map((field, ind) => (
-          <FormInput key={ind} data={field} reg={register} errors={errors} />
+      <form onSubmit={handleSubmit(onSubmitHandler)} className="p-6 text-center !w-[350px]">
+        {d.fields.map((field, ind) => (
+          <FormInput
+            key={ind}
+            data={field}
+            reg={register}
+            errors={errors}
+            options={fieldsParams[field.name as keyof typeof fieldsParams]}
+          />
         ))}
-        {isSending ? (
-          <Loader />
-        ) : (
-          <Button variant="contained" className=" bg-main_card hover:bg-main_dark" type="submit">
-            {d.button.login}
-          </Button>
-        )}
+        <Button variant="contained" type="submit" className=" bg-main_card hover:bg-main_dark ">
+          {d.button.text}
+        </Button>
       </form>
+      {isSending && <Loader />}
     </>
   ) : error ? (
     <FormNotification forOrdering forError subText={finalMessage} />

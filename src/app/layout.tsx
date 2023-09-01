@@ -46,7 +46,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className={montserrat.className}>
         <Header session={session} />
-        {children}
+        {/* <Suspense fallback={<Loading />}></Suspense> */}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

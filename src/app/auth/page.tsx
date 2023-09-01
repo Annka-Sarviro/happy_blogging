@@ -14,7 +14,7 @@ export default async function AuthPage() {
   }
 
   return (
-    <section>
+    <section className="py-4">
       <Auth />
     </section>
   );

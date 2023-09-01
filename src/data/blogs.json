@@ -1,0 +1,26 @@
+{
+  "title": "All blogs",
+  "fields": [
+    { "name": "title", "type": "text", "label": "Title" },
+    { "name": "text", "type": "text", "label": "Type text" }
+  ],
+  "button": { "text": "Add new blogs", "comments": "Add new comment", "cansel": "x", "add": "+" },
+  "messages": {
+    "sent": "Success",
+    "error": "Ooops...Try again",
+    "validation": {
+      "title": {
+        "required": "This field is required",
+        "min": "Title is to short",
+        "max": "Title is to long",
+        "empty": "Field can not be empty"
+      },
+      "text": {
+        "required": "This field is required",
+        "min": "Text is to short",
+        "max": "Text is to long",
+        "empty": "Field can not be empty"
+      }
+    }
+  }
+}

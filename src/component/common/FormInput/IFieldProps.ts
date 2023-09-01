@@ -8,7 +8,8 @@ interface IFieldProps {
   };
   reg: UseFormRegister<any>;
   errors?: any;
-  options: RegisterOptions;
+  options?: RegisterOptions;
+  showErrors?: boolean;
 }
 
 export default IFieldProps;

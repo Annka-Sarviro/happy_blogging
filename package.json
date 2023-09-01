@@ -10,6 +10,9 @@
     "format": "prettier --write **/*.{ts,tsx,css,mdx}"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.7",
     "@supabase/auth-helpers-nextjs": "^0.7.4",
     "@supabase/auth-ui-react": "^0.4.2",
     "@supabase/auth-ui-shared": "^0.1.6",
@@ -31,6 +34,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "3.0.1",
     "prettier-plugin-organize-imports": "^3.2.3",
