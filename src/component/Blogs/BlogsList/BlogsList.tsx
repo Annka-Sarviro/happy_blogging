@@ -9,17 +9,25 @@ import d from '@/data/blogs.json';
 export const BlogList = (props: any) => {
   const { blogs, roles, id } = props;
 
+  console.log();
+
   return (
     <div className="py-4 ">
       <Typography variant="h4" component="h1" className="text-center mb-4">
         {d.title}
       </Typography>
 
-      <ul className="grid grid-cols-3 gap-4 md:grid-cols-4">
-        {blogs.map((item: BlogsCardProps) => (
-          <BlogCard key={item.id} item={item} user_id={id} roles={roles} />
-        ))}
-      </ul>
+      {blogs.length === 0 ? (
+        <Typography variant="subtitle2" component="p">
+          {d.messages.notHave}
+        </Typography>
+      ) : (
+        <ul className="grid grid-cols-3 gap-4 md:grid-cols-4">
+          {blogs.map((item: BlogsCardProps) => (
+            <BlogCard key={item.id} item={item} user_id={id} roles={roles} />
+          ))}
+        </ul>
+      )}
 
       {roles === 'author' && <NewBlogs id={id} />}
     </div>

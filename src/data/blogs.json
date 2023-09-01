@@ -4,8 +4,16 @@
     { "name": "title", "type": "text", "label": "Title" },
     { "name": "text", "type": "text", "label": "Type text" }
   ],
-  "button": { "text": "Add new blogs", "comments": "Add new comment", "cansel": "x", "add": "+" },
+  "button": {
+    "text": "Add new blogs",
+    "comments": "Add new comment",
+    "cansel": "x",
+    "add": "+",
+    "allPosts": "All Posts",
+    "myPosts": "My posts"
+  },
   "messages": {
+    "notHave": "You not have your blogs",
     "sent": "Success",
     "error": "Ooops...Try again",
     "validation": {
